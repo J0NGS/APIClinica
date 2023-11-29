@@ -1,8 +1,12 @@
 package com.j0ngs.APIClinica.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
@@ -18,6 +22,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
+@NoArgsConstructor
 @Entity
 public class Agendamento {
 
@@ -25,10 +30,12 @@ public class Agendamento {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @JsonIgnoreProperties({"agendamentos"})
     @ManyToOne
     @JoinColumn(name = "medico_id", nullable = false)
     private Medico medico;
 
+    @JsonIgnoreProperties({"agendamentos"})
     @ManyToOne
     @JoinColumn(name = "paciente_id", nullable = false)
     private Paciente paciente;
