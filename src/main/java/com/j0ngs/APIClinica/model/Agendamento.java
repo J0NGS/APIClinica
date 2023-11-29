@@ -34,7 +34,6 @@ public class Agendamento {
     @JoinColumn(name = "paciente_id", nullable = false)
     private Paciente paciente;
 
-    @Column(unique = true)
     private LocalDateTime dataHora;
 
 
