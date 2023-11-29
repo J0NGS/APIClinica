@@ -26,7 +26,6 @@ public class Agendamento {
     private UUID id;
 
     @ManyToOne
-    @JsonManagedReference
     @JoinColumn(name = "medico_id", nullable = false)
     private Medico medico;
 
